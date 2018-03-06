@@ -49,16 +49,15 @@ const ast = parse(text, {
 });
 
 const prettyPrint = (ast, fn) => {
-  const {code} = generate(ast, {retainLines: true});
-  return prettier.format(code, prettierConfig);
+  // const {code} = generate(ast, {retainLines: true});
+  // return prettier.format(code, prettierConfig);
 
-  // prettier.format(text, {
-  //   ...prettierConfig,
-  //   parser(text, {babylon}, options) {
-  //     console.log('options are', options);
-  //     return ast;
-  //   },
-  // });
+  return prettier.format('', {
+    ...prettierConfig,
+    parser(text, {}, options) {
+      return ast;
+    },
+  });
 };
 
 test('find first comment in canvas', () => {
